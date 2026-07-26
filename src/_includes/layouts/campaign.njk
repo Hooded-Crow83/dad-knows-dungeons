@@ -1,0 +1,82 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+{% set relatedJournal = collections.journal | selectattr("data.campaignSlug", "equalto", slug) %}
+<article class="section">
+  <div class="container">
+    <ol class="breadcrumbs">
+      <li><a href="/">Home</a></li>
+      <li><a href="/campaigns/">Campaigns</a></li>
+      <li>{{ title }}</li>
+    </ol>
+
+    <div class="grid grid--sidebar">
+      <div>
+        {% if coverImage %}
+        <img src="{{ coverImage }}" alt="{{ title }} cover art" style="border-radius: 14px; margin-bottom: 1.5rem; aspect-ratio: 16/8; object-fit: cover; width: 100%;">
+        {% endif %}
+
+        <h1>{{ title }}</h1>
+        <div class="prose">
+          {{ content | safe }}
+        </div>
+
+        {% if relatedJournal.length %}
+        <h2>Journal entries</h2>
+        <ul class="session-list">
+          {% for entry in relatedJournal %}
+          <li class="session-list__item">
+            <a href="{{ entry.url }}">{{ entry.data.title }}</a>
+            <span class="session-list__date">{{ entry.date | readableDate }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if sessions %}
+        <h2>Sessions</h2>
+        <ul class="session-list">
+          {% for session in sessions %}
+          <li class="session-list__item">
+            <span>{{ session.title }}</span>
+            <span class="session-list__date">{{ session.date }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if characters %}
+        <h2>Characters</h2>
+        <div class="grid grid--3">
+          {% for character in characters %}
+          <div class="card">
+            <div class="card__body">
+              <p class="card__title">{{ character.name }}</p>
+              <p class="card__excerpt">{{ character.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      <aside class="stack">
+        <div class="card">
+          <div class="card__body">
+            <p class="card__eyebrow">Campaign info</p>
+            {% if system %}<p><strong>System:</strong> {{ system }}</p>{% endif %}
+            {% if status %}<p><strong>Status:</strong> <span class="badge badge--status-{{ status | lower }}">{{ status }}</span></p>{% endif %}
+            {% if tags %}
+            <ul class="tag-pills">
+              {% for tag in tags | filterTagList %}
+              <li><a class="tag-pill" href="/journal/tags/{{ tag | slugify }}/">{{ tag }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>

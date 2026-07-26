@@ -1,0 +1,165 @@
+// =============================================================
+// Card components
+// =============================================================
+
+.card {
+  background: @cream;
+  border: 1px solid @line;
+  border-radius: @radius-lg;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform @speed-base @ease, box-shadow @speed-base @ease;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px -18px @shadow;
+  }
+}
+
+.card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: @parchment-dark;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.card__body {
+  padding: @space-md;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.card__eyebrow {
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: @ink-faint;
+}
+
+.card__title {
+  font-size: @fs-md;
+  margin: 0;
+
+  a {
+    color: @leather-dark;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: @brick;
+    }
+  }
+}
+
+.card {
+  position: relative;
+}
+
+.card__excerpt {
+  color: @ink-soft;
+  font-size: @fs-sm;
+  margin: 0;
+}
+
+.card__meta {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  color: @ink-faint;
+}
+
+// Author bio card
+.author-card {
+  display: flex;
+  gap: @space-md;
+  align-items: flex-start;
+  background: @cream;
+  border: 1px solid @line;
+  border-radius: @radius-lg;
+  padding: @space-md;
+}
+
+.author-card__avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: @parchment-dark;
+  border: 2px solid @gold;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.author-card__name {
+  margin: 0 0 0.15em;
+  font-size: @fs-lg;
+}
+
+.author-card__role {
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: @sage-dark;
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+// Episode player card
+.episode-card {
+  display: grid;
+  gap: @space-md;
+  padding: @space-md;
+  background: @cream;
+  border: 1px solid @line;
+  border-radius: @radius-lg;
+
+  @media (min-width: @bp-md) {
+    grid-template-columns: 160px 1fr;
+    align-items: start;
+  }
+}
+
+.episode-card__art {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: @radius-md;
+  overflow: hidden;
+  background: @leather;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.episode-card__number {
+  font-family: @font-mono;
+  color: @brick;
+  font-size: @fs-sm;
+}

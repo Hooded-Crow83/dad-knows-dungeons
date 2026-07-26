@@ -1,0 +1,97 @@
+// =============================================================
+// Layout primitives
+// =============================================================
+
+.container {
+  width: 100%;
+  max-width: @container-max;
+  margin-inline: auto;
+  padding-inline: @space-md;
+}
+
+.container--narrow {
+  max-width: @container-narrow;
+}
+
+.section {
+  padding-block: @space-xl;
+
+  @media (min-width: @bp-lg) {
+    padding-block: @space-2xl;
+  }
+}
+
+.section--tight {
+  padding-block: @space-lg;
+}
+
+.section--band {
+  background: @parchment-dark;
+  border-block: 1px solid @line;
+}
+
+.grid {
+  display: grid;
+  gap: @space-md;
+}
+
+.grid--2 {
+  @media (min-width: @bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid--3 {
+  @media (min-width: @bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: @bp-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid--sidebar {
+  @media (min-width: @bp-lg) {
+    grid-template-columns: 2.4fr 1fr;
+    align-items: start;
+    gap: @space-xl;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: @space-sm;
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: @space-sm;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: @space-md;
+  top: -60px;
+  background: @ink;
+  color: @cream;
+  padding: @space-xs @space-sm;
+  border-radius: @radius-sm;
+  z-index: 1000;
+  transition: top @speed-base @ease;
+
+  &:focus {
+    top: @space-sm;
+  }
+}

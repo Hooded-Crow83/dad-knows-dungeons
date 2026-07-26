@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Podcast
+description: "Listen to Dad Knows Dungeons — GM advice, actual-play highlights, and honest conversation about running tabletop games."
+permalink: /podcast/
+---
+{% set featured = collections.podcastEpisodes | first %}
+<section class="section">
+  <div class="container">
+    <p class="hero__eyebrow">Listen</p>
+    <h1>The Podcast</h1>
+    <p class="hero__lede mb-lg">New episodes drop every other week. Subscribe wherever you listen, or grab the RSS feed directly.</p>
+
+    <div class="hero__actions mb-lg">
+      <a class="btn btn--primary" href="{{ site.social.spotify }}">Spotify</a>
+      <a class="btn btn--secondary" href="{{ site.social.apple }}">Apple Podcasts</a>
+      <a class="btn btn--secondary" href="{{ site.social.youtube }}">YouTube</a>
+      <a class="btn btn--ghost" href="{{ site.social.rss }}">RSS feed</a>
+    </div>
+
+    {% if featured %}
+    <div class="section-heading">
+      <h2 class="mb-0">Latest episode</h2>
+    </div>
+    {% set episode = featured %}
+    {% include "partials/episode-card.njk" %}
+    {% endif %}
+
+    <div class="section-heading mt-lg">
+      <h2 class="mb-0">Episode archive</h2>
+    </div>
+    <div class="grid grid--2">
+      {% for episode in collections.podcastEpisodes %}
+      {% include "partials/episode-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

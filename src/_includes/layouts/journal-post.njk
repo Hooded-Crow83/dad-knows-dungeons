@@ -1,0 +1,62 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+<article class="section">
+  <div class="container container--narrow">
+    <ol class="breadcrumbs">
+      <li><a href="/">Home</a></li>
+      <li><a href="/journal/">Journal</a></li>
+      <li>{{ title }}</li>
+    </ol>
+
+    <header class="post-header">
+      {% if campaign %}<p class="hero__eyebrow">{{ campaign }}</p>{% endif %}
+      <h1>{{ title }}</h1>
+      <p class="post-header__meta">
+        <span>{{ date | readableDate }}</span>
+        <span>{{ content | readingTime }}</span>
+        {% if author %}<span>By {{ author }}</span>{% endif %}
+      </p>
+      {% if tags %}
+      <ul class="tag-pills">
+        {% for tag in tags | filterTagList %}
+        <li><a class="tag-pill" href="/journal/tags/{{ tag | slugify }}/">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </header>
+
+    {% if coverImage %}
+    <img src="{{ coverImage }}" alt="{{ coverImageAlt or '' }}" style="border-radius: 14px; margin-bottom: 2rem;">
+    {% endif %}
+
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    {% set journalPosts = collections.journal %}
+    {% for post in journalPosts %}
+      {% if post.url == page.url %}
+        {% set prevPost = journalPosts[loop.index] %}
+        {% set nextPost = journalPosts[loop.index0 - 1] if not loop.first else null %}
+      {% endif %}
+    {% endfor %}
+    {% if prevPost or nextPost %}
+    <nav class="post-nav" aria-label="More journal entries">
+      {% if prevPost %}
+      <a class="post-nav__link post-nav__prev" href="{{ prevPost.url }}">
+        <span class="post-nav__label">&larr; Previous</span>
+        {{ prevPost.data.title }}
+      </a>
+      {% endif %}
+      {% if nextPost %}
+      <a class="post-nav__link post-nav__next" href="{{ nextPost.url }}">
+        <span class="post-nav__label">Next &rarr;</span>
+        {{ nextPost.data.title }}
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </div>
+</article>

@@ -1,0 +1,48 @@
+---
+layout: layouts/base.njk
+title: About
+description: "Meet Patrick and Mac, the two dads behind Dad Knows Dungeons."
+permalink: /about/
+---
+<section class="section">
+  <div class="container container--narrow">
+    <p class="hero__eyebrow">About</p>
+    <h1>About Dad Knows Dungeons</h1>
+    <div class="prose">
+      <p>Dad Knows Dungeons is a home created by two guys who set out to try the impossible: make tabletop roleplaying games accessible to everyone without all the flashiness and revenue-driven logistics.</p>
+      <p>We are Patrick and Mac, and we're busy guys! We're here to provide tips for new and experienced Game Masters, eager to share our knowledge and help more people enjoy tabletop gaming.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--band">
+  <div class="container">
+    <h2>Meet the GMs</h2>
+    <div class="grid grid--2">
+      {% for author in site.authors %}
+      <div class="author-card">
+        <div class="author-card__avatar">
+          <img src="{{ author.image }}" alt="{{ author.name }}" loading="lazy">
+        </div>
+        <div>
+          <h3 class="author-card__name">{{ author.name }}</h3>
+          <span class="author-card__role">{{ author.role }}</span>
+          <p>{{ author.bio }}</p>
+          <p class="text-sm text-muted"><strong>Favorite system:</strong> {{ author.favoriteSystem }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow text-center">
+    <h2>Get in touch</h2>
+    <p>Questions, campaign ideas, or just want to say hi? We read every message.</p>
+    <div class="hero__actions" style="justify-content: center;">
+      <a class="btn btn--primary" href="/contact/">Contact us</a>
+      <a class="btn btn--secondary" href="mailto:{{ site.social.email }}">{{ site.social.email }}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{# Usage: loop with `episode` set to a collections.podcastEpisodes item #}
+<article class="episode-card">
+  <div class="episode-card__art">
+    <img src="{{ episode.data.episodeArt or '/assets/images/placeholder-podcast.svg' }}" alt="" loading="lazy">
+  </div>
+  <div class="card__body">
+    <p class="episode-card__number">Episode {{ episode.data.episodeNumber }}</p>
+    <h3 class="card__title"><a href="{{ episode.url }}">{{ episode.data.title }}</a></h3>
+    <p class="card__excerpt">{{ episode.data.summary }}</p>
+    <p class="card__meta">
+      <span>{{ episode.date | readableDate }}</span>
+      {% if episode.data.duration %}<span>{{ episode.data.duration }}</span>{% endif %}
+    </p>
+  </div>
+</article>

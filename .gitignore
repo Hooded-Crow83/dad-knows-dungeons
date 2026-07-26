@@ -1,0 +1,7 @@
+node_modules/
+_site/
+.cache/
+.env
+.DS_Store
+src/assets/css/main.css
+npm-debug.log*

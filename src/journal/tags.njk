@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /journal/tags/{{ tag | slugify }}/
+eleventyComputed:
+  title: "Tag: {{ tag }}"
+  description: "Journal entries and campaigns tagged '{{ tag }}' on Dad Knows Dungeons."
+---
+{% set taggedPosts = collections.journal | selectattr("data.tags", "defined") %}
+<section class="section">
+  <div class="container">
+    <ol class="breadcrumbs">
+      <li><a href="/">Home</a></li>
+      <li><a href="/journal/">Journal</a></li>
+      <li>{{ tag }}</li>
+    </ol>
+    <p class="hero__eyebrow">Tag</p>
+    <h1>{{ tag }}</h1>
+
+    <div class="grid grid--3 mt-lg">
+      {% for post in taggedPosts %}
+        {% if tag in post.data.tags %}
+        {% include "partials/journal-card.njk" %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

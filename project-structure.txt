@@ -1,0 +1,83 @@
+Dad Knows Dungeons — Project Structure
+=======================================
+
+dad-knows-dungeons/
+├── .gitignore
+├── eleventy.config.js        Eleventy config: collections, filters, shortcodes, passthrough copy
+├── netlify.toml               Netlify build command, publish dir, headers, 404 redirect
+├── package.json                npm scripts (build, start, css:build) + dependencies
+├── README.md
+├── project-structure.txt      (this file)
+│
+└── src/
+    ├── 404.njk                 Custom 404 page
+    ├── index.njk                Homepage (hero, mission, featured content, newsletter)
+    ├── robots.txt
+    ├── sitemap.njk              Generates /sitemap.xml from all collections
+    ├── feed.njk                  Generates /feed.xml (RSS — journal + podcast combined)
+    │
+    ├── _data/
+    │   ├── site.js               Sitewide metadata: name, nav, authors, social links
+    │   └── currentYear.js        Computed value for footer copyright
+    │
+    ├── _includes/
+    │   ├── layouts/
+    │   │   ├── base.njk           Root HTML shell (head, header, main, footer, scripts)
+    │   │   ├── page.njk            Generic content-page layout
+    │   │   ├── journal-post.njk    Journal post layout (tags, reading time, prev/next)
+    │   │   ├── campaign.njk        Campaign layout (sessions, characters, related journal entries)
+    │   │   └── podcast-episode.njk Episode layout (player, show notes, transcript placeholder)
+    │   │
+    │   └── partials/
+    │       ├── head.njk             SEO: OpenGraph, Twitter cards, schema.org, favicons
+    │       ├── header.njk            Logo (d20 replaces the "O" in "Knows") + responsive nav
+    │       ├── footer.njk            Nav, social icons, RSS/podcast links, copyright
+    │       ├── journal-card.njk      Reusable journal post card
+    │       ├── campaign-card.njk     Reusable campaign card
+    │       └── episode-card.njk      Reusable podcast episode card
+    │
+    ├── assets/
+    │   ├── css/
+    │   │   ├── main.less             Entry point — imports all partials below
+    │   │   ├── base/                 variables, fonts, reset, layout, utilities
+    │   │   └── components/           header-nav, hero-cta, buttons-tags, cards,
+    │   │                             content-player, forms-misc, footer
+    │   ├── js/
+    │   │   └── main.js               Mobile nav toggle + client-side journal search
+    │   ├── images/                   Logo, favicons, placeholder art (SVG), OG image
+    │   ├── audio/                    Drop episode mp3 files here
+    │   └── fonts/                    (empty — see README "Fonts" section)
+    │
+    ├── campaigns/
+    │   ├── index.njk                 Campaign archive
+    │   ├── salt-iron-coast.md        Sample campaign
+    │   └── embers-of-the-hollow-crown.md
+    │
+    ├── journal/
+    │   ├── index.njk                 Paginated journal list + tag filter + search box
+    │   ├── tags.njk                  Generates /journal/tags/<tag>/ archive pages
+    │   └── posts/
+    │       ├── posts.json            Directory data: default layout + permalink
+    │       ├── lighthouse-doesnt-blink.md
+    │       ├── low-tide-secrets.md
+    │       └── improvise-npcs.md
+    │
+    ├── podcast/
+    │   ├── index.njk                 Featured episode + archive
+    │   └── episodes/
+    │       ├── episodes.json         Directory data: default layout + permalink
+    │       ├── session-zero.md
+    │       └── splitting-the-party.md
+    │
+    ├── about/
+    │   └── index.njk                 Mission, author bios, favorite systems
+    │
+    └── contact/
+        └── index.njk                 Netlify Forms contact form + FAQ
+
+Adding new content
+-------------------
+- New campaign  → add a markdown file to src/campaigns/
+- New journal post → add a markdown file to src/journal/posts/
+- New podcast episode → add a markdown file to src/podcast/episodes/
+No HTML editing required for any of the above — front matter + Markdown only.

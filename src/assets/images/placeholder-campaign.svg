@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+  <rect width="400" height="250" fill="#E7D8B4"/>
+  <path d="M0 180 Q100 140 200 175 T400 160 V250 H0 Z" fill="#5F7052" opacity="0.35"/>
+  <polygon points="200,70 240,95 240,135 200,160 160,135 160,95" fill="#6B4226" stroke="#2B2118" stroke-width="2"/>
+  <text x="200" y="122" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#F3E9D2">campaign</text>
+</svg>

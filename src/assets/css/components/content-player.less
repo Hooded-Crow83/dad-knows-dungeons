@@ -1,0 +1,163 @@
+// =============================================================
+// Long-form markdown content typography
+// =============================================================
+
+.prose {
+  max-width: 70ch;
+
+  h2 { margin-top: @space-lg; }
+  h3 { margin-top: @space-md; }
+
+  a { text-decoration-line: underline; }
+
+  blockquote {
+    margin: @space-md 0;
+    padding: @space-sm @space-md;
+    border-left: 4px solid @gold;
+    background: fade(@gold, 10%);
+    font-style: italic;
+    color: @ink-soft;
+
+    p:last-child { margin-bottom: 0; }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: @space-md 0;
+    font-size: @fs-sm;
+
+    th, td {
+      border: 1px solid @line-strong;
+      padding: 0.5em 0.75em;
+      text-align: left;
+    }
+
+    th {
+      background: @parchment-dark;
+      font-family: @font-mono;
+      text-transform: uppercase;
+      font-size: @fs-xs;
+    }
+  }
+
+  code {
+    font-family: @font-mono;
+    background: @parchment-dark;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  pre {
+    background: @ink;
+    color: @cream;
+    padding: @space-sm @space-md;
+    border-radius: @radius-md;
+    overflow-x: auto;
+
+    code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+  }
+
+  .video-embed {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    margin: @space-md 0;
+    border-radius: @radius-md;
+    overflow: hidden;
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  img {
+    border-radius: @radius-md;
+    margin: @space-md 0;
+  }
+}
+
+.post-header {
+  margin-bottom: @space-lg;
+}
+
+.post-header__meta {
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  color: @ink-faint;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-bottom: @space-sm;
+}
+
+// =============================================================
+// Audio player (podcast episode)
+// =============================================================
+
+.audio-player {
+  width: 100%;
+  margin: @space-sm 0;
+  border-radius: @radius-md;
+}
+
+.transcript-placeholder {
+  border: 1px dashed @line-strong;
+  border-radius: @radius-md;
+  padding: @space-md;
+  color: @ink-faint;
+  font-size: @fs-sm;
+}
+
+// =============================================================
+// Campaign detail: session list, character/map grids
+// =============================================================
+
+.session-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid @line;
+}
+
+.session-list__item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: @space-sm 0;
+  border-bottom: 1px solid @line;
+
+  a {
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+.session-list__date {
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  color: @ink-faint;
+}
+
+.stat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @space-md;
+  font-family: @font-mono;
+  font-size: @fs-sm;
+  color: @ink-soft;
+  margin-bottom: @space-md;
+}
+
+.stat-strip__item strong {
+  display: block;
+  color: @ink;
+  font-family: @font-body;
+}

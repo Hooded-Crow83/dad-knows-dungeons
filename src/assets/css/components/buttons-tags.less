@@ -1,0 +1,112 @@
+// =============================================================
+// Buttons, tag pills, badges
+// =============================================================
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: @font-body;
+  font-weight: 600;
+  font-size: @fs-sm;
+  padding: 0.75em 1.4em;
+  border-radius: @radius-md;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform @speed-fast @ease, background-color @speed-fast @ease, color @speed-fast @ease, border-color @speed-fast @ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-1px);
+  }
+}
+
+.btn--primary {
+  background: @brick;
+  color: @cream;
+
+  &:hover,
+  &:focus-visible {
+    background: @brick-dark;
+    color: @cream;
+  }
+}
+
+.btn--secondary {
+  background: transparent;
+  border-color: @leather;
+  color: @leather-dark;
+
+  &:hover,
+  &:focus-visible {
+    background: @leather;
+    color: @cream;
+  }
+}
+
+.btn--ghost {
+  background: transparent;
+  color: @ink-soft;
+  padding-inline: 0.6em;
+
+  &:hover,
+  &:focus-visible {
+    color: @brick;
+  }
+}
+
+.btn--block {
+  width: 100%;
+  justify-content: center;
+}
+
+.tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tag-pill {
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: @sage-dark;
+  background: fade(@sage, 14%);
+  border: 1px solid fade(@sage, 35%);
+  padding: 0.3em 0.75em;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background-color @speed-fast @ease;
+
+  &:hover,
+  &:focus-visible {
+    background: fade(@sage, 26%);
+    color: @sage-dark;
+  }
+}
+
+.tag-pill--active {
+  background: @sage;
+  color: @cream;
+  border-color: @sage;
+}
+
+.badge {
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25em 0.6em;
+  border-radius: @radius-sm;
+  background: @gold;
+  color: @ink;
+}
+
+.badge--status-active { background: @sage; color: @cream; }
+.badge--status-hiatus { background: @gold; color: @ink; }
+.badge--status-complete { background: @leather; color: @cream; }

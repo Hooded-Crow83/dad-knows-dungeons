@@ -1,0 +1,26 @@
+{
+  "name": "dad-knows-dungeons",
+  "version": "1.0.0",
+  "description": "Dad Knows Dungeons — a TTRPG Game Master podcast, campaign journal, and resource hub.",
+  "scripts": {
+    "build": "npm run css:build && eleventy",
+    "start": "npm run css:build && concurrently \"npx eleventy --serve\" \"npm run css:watch\"",
+    "css:build": "lessc --clean-css=\"--s1 --advanced\" src/assets/css/main.less src/assets/css/main.css",
+    "css:watch": "onchange \"src/assets/css/**/*.less\" -- npm run css:build",
+    "clean": "rimraf _site"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^4.0.2",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "concurrently": "^8.2.2",
+    "less": "^4.8.0",
+    "less-plugin-clean-css": "^1.5.1",
+    "markdown-it": "^14.1.0",
+    "markdown-it-anchor": "^9.0.1",
+    "onchange": "^7.1.0",
+    "rimraf": "^5.0.5"
+  }
+}

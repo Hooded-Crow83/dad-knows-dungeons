@@ -1,0 +1,111 @@
+// =============================================================
+// Reset & base element styling
+// =============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: @parchment;
+  background-image: radial-gradient(circle at top left, fade(@cream, 60%), transparent 55%);
+  color: @ink;
+  font-family: @font-body;
+  font-size: @fs-base;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: @font-display;
+  color: @leather-dark;
+  line-height: 1.15;
+  margin: 0 0 @space-sm;
+  font-weight: 600;
+}
+
+h1 { font-size: @fs-3xl; }
+h2 { font-size: @fs-2xl; }
+h3 { font-size: @fs-xl; }
+h4 { font-size: @fs-md; font-family: @font-body; font-weight: 700; }
+
+p {
+  margin: 0 0 @space-md;
+}
+
+a {
+  color: @brick;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: color @speed-fast @ease;
+
+  &:hover,
+  &:focus-visible {
+    color: @brick-dark;
+  }
+}
+
+ul,
+ol {
+  padding-left: 1.3em;
+  margin: 0 0 @space-md;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid @line-strong;
+  margin: @space-lg 0;
+}
+
+// Consistent, visible focus states everywhere (accessibility floor)
+:focus-visible {
+  outline: 3px solid @gold;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: fade(@gold, 45%);
+  color: @ink;
+}

@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Campaigns
+description: "Actual-play campaigns from Dad Knows Dungeons — session logs, characters, and maps for every table we run."
+permalink: /campaigns/
+---
+<section class="section">
+  <div class="container">
+    <p class="hero__eyebrow">Actual play</p>
+    <h1>Campaigns</h1>
+    <p class="hero__lede mb-lg">Every world we're running or have wrapped up, with session-by-session journal entries. New campaign? Just add a markdown file — no HTML required.</p>
+
+    <div class="grid grid--3">
+      {% for campaign in collections.campaigns %}
+      {% include "partials/campaign-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

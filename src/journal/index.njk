@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+title: Journal
+description: "Session recaps, GM advice, and behind-the-scenes updates from Dad Knows Dungeons."
+permalink: /journal/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}
+pagination:
+  data: collections.journal
+  size: 6
+  alias: posts
+  reverse: false
+---
+<section class="section">
+  <div class="container">
+    <p class="hero__eyebrow">Session logs &amp; GM advice</p>
+    <h1>Journal</h1>
+    <p class="hero__lede mb-lg">Campaign recaps, Game Master tips, and the occasional "here's what we'd do differently" post-mortem.</p>
+
+    <div class="search-bar">
+      <label class="visually-hidden" for="journal-search">Search the journal</label>
+      <input class="search-bar__input" id="journal-search" type="search" placeholder="Search titles and tags…" data-journal-search>
+    </div>
+
+    {% if collections.tagList.length %}
+    <ul class="tag-pills mb-lg">
+      <li><a class="tag-pill tag-pill--active" href="/journal/">All</a></li>
+      {% for tag in collections.tagList %}
+      <li><a class="tag-pill" href="/journal/tags/{{ tag | slugify }}/">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="grid grid--3" data-journal-grid>
+      {% for post in posts %}
+      <div data-journal-item data-title="{{ post.data.title | lower }}" data-tags="{{ post.data.tags | join(' ') | lower }}">
+        {% include "partials/journal-card.njk" %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <nav class="pagination" aria-label="Journal pagination">
+      {% if pagination.href.previous %}<a class="pagination__link" href="{{ pagination.href.previous }}">&larr; Newer</a>{% else %}<span></span>{% endif %}
+      {% if pagination.href.next %}<a class="pagination__link" href="{{ pagination.href.next }}">Older &rarr;</a>{% endif %}
+    </nav>
+  </div>
+</section>

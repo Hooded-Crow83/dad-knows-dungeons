@@ -1,0 +1,14 @@
+{# Usage: loop with `campaign` set to a collections.campaigns item #}
+<article class="card">
+  <div class="card__media">
+    <img src="{{ campaign.data.coverImage or '/assets/images/placeholder-campaign.svg' }}" alt="" loading="lazy">
+  </div>
+  <div class="card__body">
+    <p class="card__eyebrow">{{ campaign.data.system }}</p>
+    <h3 class="card__title"><a href="{{ campaign.url }}">{{ campaign.data.title }}</a></h3>
+    <p class="card__excerpt">{{ campaign.data.description }}</p>
+    <p class="card__meta">
+      <span class="badge badge--status-{{ campaign.data.status | lower }}">{{ campaign.data.status }}</span>
+    </p>
+  </div>
+</article>

@@ -1,0 +1,116 @@
+// =============================================================
+// Hero, CTA band, newsletter signup
+// =============================================================
+
+.hero {
+  position: relative;
+  padding-block: @space-xl @space-2xl;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 85% 20%, fade(@gold, 22%), transparent 55%),
+    radial-gradient(ellipse at 10% 90%, fade(@sage, 18%), transparent 50%),
+    @parchment;
+  border-bottom: 1px solid @line;
+
+  .container {
+    display: grid;
+    gap: @space-lg;
+    align-items: center;
+
+    @media (min-width: @bp-lg) {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: @space-2xl;
+    }
+  }
+}
+
+.hero__eyebrow {
+  font-family: @font-mono;
+  font-size: @fs-xs;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: @sage-dark;
+  margin-bottom: @space-sm;
+}
+
+.hero__title {
+  font-size: @fs-3xl;
+  margin-bottom: @space-sm;
+}
+
+.hero__lede {
+  font-size: @fs-md;
+  color: @ink-soft;
+  max-width: 46ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @space-sm;
+  margin-top: @space-md;
+}
+
+.hero__art {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: @radius-lg;
+  border: 1px solid @line-strong;
+  background: @cream;
+  box-shadow: 0 18px 40px -20px @shadow;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.cta-band {
+  background: @leather-dark;
+  color: @cream;
+  border-radius: @radius-lg;
+  padding: @space-lg;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: @space-md;
+
+  h2, h3 {
+    color: @cream;
+    margin-bottom: 0.25em;
+  }
+
+  p {
+    color: fade(@cream, 82%);
+    margin-bottom: 0;
+  }
+}
+
+.newsletter {
+  background: @sage-dark;
+  color: @cream;
+  border-radius: @radius-lg;
+  padding: @space-lg;
+
+  h2, h3 { color: @cream; }
+  p { color: fade(@cream, 85%); }
+}
+
+.newsletter__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: @space-sm;
+}
+
+.newsletter__input {
+  flex: 1 1 220px;
+  padding: 0.75em 1em;
+  border-radius: @radius-md;
+  border: 1px solid transparent;
+  background: fade(@cream, 92%);
+  color: @ink;
+}

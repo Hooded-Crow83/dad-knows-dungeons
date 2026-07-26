@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+ogType: article
+---
+<article class="section">
+  <div class="container container--narrow">
+    <ol class="breadcrumbs">
+      <li><a href="/">Home</a></li>
+      <li><a href="/podcast/">Podcast</a></li>
+      <li>{{ title }}</li>
+    </ol>
+
+    <p class="hero__eyebrow">Episode {{ episodeNumber }}</p>
+    <h1>{{ title }}</h1>
+    <p class="post-header__meta">
+      <span>{{ date | readableDate }}</span>
+      {% if duration %}<span>{{ duration }}</span>{% endif %}
+    </p>
+
+    {% if episodeArt %}
+    <img src="{{ episodeArt }}" alt="" style="border-radius: 14px; margin: 1.5rem 0; max-width: 320px;">
+    {% endif %}
+
+    {% if audioUrl %}
+    <audio class="audio-player" controls preload="none">
+      <source src="{{ audioUrl }}" type="audio/mpeg">
+      Your browser does not support the audio element. <a href="{{ audioUrl }}">Download the episode</a> instead.
+    </audio>
+    {% endif %}
+
+    <div class="hero__actions">
+      {% if audioUrl %}<a class="btn btn--secondary" href="{{ audioUrl }}" download>Download episode</a>{% endif %}
+      <a class="btn btn--ghost" href="{{ site.social.spotify }}">Spotify</a>
+      <a class="btn btn--ghost" href="{{ site.social.apple }}">Apple Podcasts</a>
+      <a class="btn btn--ghost" href="{{ site.social.youtube }}">YouTube</a>
+    </div>
+
+    <h2 class="mt-lg">Show notes</h2>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+
+    <h2>Transcript</h2>
+    <p class="transcript-placeholder">A full transcript for this episode is on the way. Check back soon, or reach out if you need it sooner.</p>
+  </div>
+</article>

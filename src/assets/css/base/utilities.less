@@ -1,0 +1,38 @@
+// =============================================================
+// Small utility classes
+// =============================================================
+
+.text-center { text-align: center; }
+.text-muted { color: @ink-faint; }
+.text-sm { font-size: @fs-sm; }
+.mono { font-family: @font-mono; }
+
+.mt-0 { margin-top: 0 !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mt-lg { margin-top: @space-lg; }
+.mb-lg { margin-bottom: @space-lg; }
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: @space-sm;
+  margin-bottom: @space-md;
+  flex-wrap: wrap;
+}
+
+.section-heading__link {
+  font-family: @font-mono;
+  font-size: @fs-sm;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.divider-torn {
+  height: 14px;
+  background-repeat: repeat-x;
+  background-size: 24px 14px;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14' viewBox='0 0 24 14'%3E%3Cpath d='M0 0 L6 10 L12 2 L18 12 L24 0' fill='none' stroke='%23A6432D' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  margin-block: @space-md;
+  opacity: 0.55;
+}

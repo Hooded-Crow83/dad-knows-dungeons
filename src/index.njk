@@ -1,0 +1,89 @@
+---
+layout: layouts/base.njk
+description: "Dad Knows Dungeons is a TTRPG Game Master podcast and campaign journal — honest advice, actual-play campaigns, and dice-and-parchment charm from two working dads."
+---
+{% set featuredEpisode = collections.podcastEpisodes | first %}
+{% set featuredCampaign = collections.campaigns | first %}
+{% set latestJournal = collections.journal | head(3) %}
+
+<section class="hero">
+  <div class="container">
+    <div>
+      <p class="hero__eyebrow">A GM notebook for the rest of us</p>
+      <h1 class="hero__title">Tabletop wisdom from two dads who'd rather be rolling dice.</h1>
+      <p class="hero__lede">{{ site.description }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="/podcast/">Listen to the podcast</a>
+        <a class="btn btn--secondary" href="/campaigns/">Browse our campaigns</a>
+      </div>
+    </div>
+    <div class="hero__art">
+      <img src="/assets/images/hero-table.svg" alt="Illustration of a tabletop with a map, dice, and character sheets" loading="eager">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow text-center">
+    <p class="hero__eyebrow">Our mission</p>
+    <h2>Make the game table welcoming, not intimidating.</h2>
+    <p class="hero__lede" style="margin-inline: auto;">We started Dad Knows Dungeons to prove you don't need a studio, a hundred minis, or a decade of experience to run a great game — just a little prep, a willing table, and the nerve to say "yes, and."</p>
+  </div>
+</section>
+
+{% if featuredEpisode %}
+<section class="section section--band">
+  <div class="container">
+    <div class="section-heading">
+      <h2 class="mb-0">Featured episode</h2>
+      <a class="section-heading__link" href="/podcast/">All episodes &rarr;</a>
+    </div>
+    {% include "partials/episode-card.njk" %}
+  </div>
+</section>
+{% endif %}
+
+{% if featuredCampaign %}
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <h2 class="mb-0">Featured campaign</h2>
+      <a class="section-heading__link" href="/campaigns/">All campaigns &rarr;</a>
+    </div>
+    <div class="grid grid--3">
+      {% set campaign = featuredCampaign %}
+      {% include "partials/campaign-card.njk" %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if latestJournal.length %}
+<section class="section section--band">
+  <div class="container">
+    <div class="section-heading">
+      <h2 class="mb-0">Latest from the journal</h2>
+      <a class="section-heading__link" href="/journal/">Read the journal &rarr;</a>
+    </div>
+    <div class="grid grid--3">
+      {% for post in latestJournal %}
+      {% include "partials/journal-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section">
+  <div class="container">
+    <div class="newsletter">
+      <h2>Never miss a session recap</h2>
+      <p>One email a week: new episodes, journal entries, and the occasional GM tip we wish we'd known sooner.</p>
+      <form class="newsletter__form" action="#" method="post">
+        <label class="visually-hidden" for="newsletter-email">Email address</label>
+        <input class="newsletter__input" id="newsletter-email" name="email" type="email" placeholder="you@example.com" required>
+        <button class="btn btn--primary" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>

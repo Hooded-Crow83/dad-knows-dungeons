@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/" aria-label="{{ site.name }} — home">
+      <span class="logo__word">
+        Dad Kn<img class="logo__die" src="/assets/images/d20-logo.svg" alt="" aria-hidden="true">ws Dungeons
+      </span>
+    </a>
+
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+      <span class="visually-hidden">Toggle menu</span>
+      <span class="nav-toggle__icon"></span>
+    </button>
+
+    <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+      <ul class="primary-nav__list">
+        {% for item in site.nav %}
+        <li>
+          <a class="primary-nav__link" href="{{ item.url }}"
+            {% if page.url == item.url %}aria-current="page"{% endif %}>
+            {{ item.text }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+  <div class="nav-scrim" id="nav-scrim"></div>
+</header>
